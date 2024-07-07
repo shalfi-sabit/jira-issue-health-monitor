@@ -5,7 +5,7 @@ import { differenceInDays, max } from "date-fns";
 import { useModal } from "./hooks/useModal";
 
 import {
-  getDtataFromJira,
+  getDataFromJira,
   getIssueChangelog,
   sendEmailToAssignee,
 } from "./utils/api";
@@ -17,24 +17,24 @@ import {
   generateOldSprints,
 } from "./utils/helper";
 
-import Status from "./components/status";
-import UnhealthyParams from "./components/unhealthy-params";
-import Sprint from "./components/sprint";
-import Links from "./components/links";
-import Activity from "./components/activity";
-import Assignee from "./components/assignee";
-import Modal from "./components/modal";
-import HistoricalAssignees from "./components/historical-assignees";
+import Status from "./features/issue-glance/status";
+import UnhealthyParams from "./features/issue-glance/unhealthy-params";
+import Sprint from "./features/issue-glance/sprint";
+import Links from "./features/issue-glance/links";
+import Activity from "./features/issue-glance/activity";
+import Assignee from "./features/issue-glance/assignee";
+import Modal from "./features/issue-glance/modal";
+import HistoricalAssignees from "./features/issue-glance/historical-assignees";
 
 const App = () => {
   const {
     platformContext: { issueKey, projectKey },
   } = useProductContext();
   const [serverData] = useState(() =>
-    getDtataFromJira(route`/rest/api/3/serverInfo`)
+    getDataFromJira(route`/rest/api/3/serverInfo`)
   );
   const [fieldsData] = useState(() =>
-    getDtataFromJira(route`/rest/api/3/field`)
+    getDataFromJira(route`/rest/api/3/field`)
   );
   const [storageData] = useState(
     async () =>
@@ -48,7 +48,7 @@ const App = () => {
   const sprintCustomFieldKey =
     fieldsData && fieldsData.filter((field) => field.name == "Sprint")[0].key;
   const [issueData] = useState(() =>
-    getDtataFromJira(composeIssueUrl(issueKey, sprintCustomFieldKey))
+    getDataFromJira(composeIssueUrl(issueKey, sprintCustomFieldKey))
   );
   const transformedIssueData = transfromIssueData(issueData);
   const {

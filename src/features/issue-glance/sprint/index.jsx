@@ -1,6 +1,6 @@
 import ForgeUI, { Fragment, Text, StatusLozenge, Strong } from "@forge/ui";
 
-import { pluralizeString } from "../../utils/helper";
+import { pluralizeString } from "../../../utils/helper";
 import OldSprintsTable from "./old-sprints-table";
 
 const Sprint = ({

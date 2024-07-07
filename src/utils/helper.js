@@ -1,7 +1,7 @@
 import { route } from "@forge/api";
 import { format } from "date-fns";
 
-import { getDtataFromJira } from "./api";
+import { getDataFromJira } from "./api";
 import { REQUIRED_ISSUE_FIELDS } from "./constants";
 
 export const pluralizeString = (num) => (num > 1 ? "s" : "");
@@ -45,7 +45,7 @@ export const generateLinkedIssuesData = (issuelinks) => {
       .filter((link) => link.hasOwnProperty("inwardIssue"))
       .map(async (link) => {
         if (link.inwardIssue) {
-          const assignee = await getDtataFromJira(
+          const assignee = await getDataFromJira(
             route`/rest/api/3/issue/${link.inwardIssue.key}?fields=assignee&expand=versionedRepresentations`
           );
 
@@ -97,4 +97,9 @@ export const mapIssueStatusToLozengeAppearance = (issueStatus) => {
     default:
       return "inprogress";
   }
+};
+
+export const projectsTransformer = (response) => {
+  if (!response) return [];
+  return response.values.map(({ key, name }) => ({ key, name }));
 };

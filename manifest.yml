@@ -5,9 +5,15 @@ modules:
       title: Issue health monitor
       description: Monitoring of the issue health.
       label: Open monitor
+  jira:adminPage:
+    - key: issue-health-monitor-admin-page
+      function: config
+      title: Issue health monitor configuration
   function:
     - key: main
       handler: index.run
+    - key: config
+      handler: config.run
 app:
   runtime:
     name: nodejs18.x

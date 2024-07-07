@@ -8,7 +8,7 @@ import ForgeUI, {
   Table,
 } from "@forge/ui";
 
-import { composeOldSprintsUrl } from "../../utils/helper";
+import { composeOldSprintsUrl } from "../../../utils/helper";
 
 const OldSprintsTable = ({
   projectKey,

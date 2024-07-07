@@ -1,6 +1,6 @@
 import ForgeUI, { ModalDialog, Form, TextArea, Fragment } from "@forge/ui";
 
-import { DEFAULT_NOTIFY_BODY } from "../../utils/constants";
+import { DEFAULT_NOTIFY_BODY } from "../../../utils/constants";
 
 const Modal = ({ modalIsOpen, hideModal, notifyAssignee }) => {
   return (

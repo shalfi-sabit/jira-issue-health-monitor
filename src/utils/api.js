@@ -1,8 +1,8 @@
 import api, { route } from "@forge/api";
 
-import { issueChangelogTransformer } from "./helper";
+import { issueChangelogTransformer, projectsTransformer } from "./helper";
 
-export const getDtataFromJira = async (url) => {
+export const getDataFromJira = async (url) => {
   try {
     const response = await api.asUser().requestJira(url);
     const result = await response.json();
@@ -14,7 +14,7 @@ export const getDtataFromJira = async (url) => {
 };
 
 export const getIssueChangelog = (issueKey) => {
-  const response = getDtataFromJira(
+  const response = getDataFromJira(
     route`/rest/api/3/issue/${issueKey}/changelog`
   );
   return issueChangelogTransformer(response);
@@ -53,4 +53,9 @@ export const sendEmailToAssignee = async (issueKey, notifyBody) => {
     });
 
   const result = await response.json();
+};
+
+export const getProjects = async () => {
+  const response = await getDataFromJira(route`/rest/api/3/project/search`);
+  return projectsTransformer(response);
 };

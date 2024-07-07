@@ -12,7 +12,7 @@ import ForgeUI, {
   Strong,
 } from "@forge/ui";
 
-import { mapIssueStatusToLozengeAppearance } from "../../utils/helper";
+import { mapIssueStatusToLozengeAppearance } from "../../../utils/helper";
 
 const UnresolvedIssuesTable = ({ linkedIssues, serverData }) => (
   <Fragment>
