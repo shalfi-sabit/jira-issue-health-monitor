@@ -1,0 +1,38 @@
+modules:
+  jira:issueGlance:
+    - key: issue-health-hello-world-glance
+      function: main
+      title: Issue health monitor
+      description: Monitoring of the issue health.
+      label: Open monitor
+  function:
+    - key: main
+      handler: index.run
+app:
+  runtime:
+    name: nodejs18.x
+  id: ari:cloud:ecosystem::app/a55343d7-6e3b-49f5-9761-365b8b78cf73
+permissions:
+  scopes:
+    - storage:app
+    - send:notification:jira
+    - read:issue-meta:jira
+    - read:avatar:jira
+    - read:issue.changelog:jira
+    - read:issue-type:jira
+    - read:project:jira
+    - read:project.property:jira
+    - read:user:jira
+    - read:application-role:jira
+    - read:avatar:jira
+    - read:group:jira
+    - read:issue-type-hierarchy:jira
+    - read:project-category:jira
+    - read:project-version:jira
+    - read:project.component:jira
+    - read:issue-security-level:jira
+    - read:issue.vote:jira
+    - read:issue:jira
+    - read:status:jira
+    - read:field-configuration:jira
+    - read:field:jira
